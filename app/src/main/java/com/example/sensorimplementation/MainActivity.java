@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
     private TextView date_view;
@@ -38,21 +40,55 @@ public class MainActivity extends AppCompatActivity {
         time_view.setText(time.getTime());
     }
 
-    @SuppressLint("MissingPermission")
     private void get_cords() {
 
+        Location locationNet = getLastBestLocation();
+        Log.i("long", Double.toString(locationNet.getLongitude()));
+        Log.i("lat", Double.toString(locationNet.getLatitude()));
 
-        LocationManager locationManager = (LocationManager)
-                getSystemService(Context.LOCATION_SERVICE);
-        LocationListener locationListener = new MyLocationListerner();
 
 
-        /*TODO This is crashing app, fix*/
 
-//        locationManager.requestLocationUpdates(
-//                LocationManager.GPS_PROVIDER, 5000, 10, locationListener);
-        //
+    }
 
+//    private Location getLastKnownLocation() {
+//        LocationManager mLocationManager;
+//        //Location myLocation = getLastKnownLocation();
+//        mLocationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
+//        List<String> providers = mLocationManager.getProviders(true);
+//        Location bestLocation = null;
+//        for (String provider : providers) {
+//            @SuppressLint("MissingPermission") Location l = mLocationManager.getLastKnownLocation(provider);
+//            if (l == null) {
+//                continue;
+//            }
+//            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+//                // Found best last known location: %s", l);
+//                bestLocation = l;
+//            }
+//        }
+//        return bestLocation;
+//    }
+    private Location getLastBestLocation() {
+        LocationManager mLocationManager = null;
+        Location locationGPS = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        Location locationNet = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+        long GPSLocationTime = 0;
+        if (null != locationGPS) { GPSLocationTime = locationGPS.getTime(); }
+
+        long NetLocationTime = 0;
+
+        if (null != locationNet) {
+            NetLocationTime = locationNet.getTime();
+        }
+
+        if ( 0 < GPSLocationTime - NetLocationTime ) {
+            return locationGPS;
+        }
+        else {
+            return locationNet;
+        }
     }
 
 }
