@@ -3,6 +3,7 @@ package com.example.sensorimplementation;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView date_view;
     private TextView time_view;
     private TextView tempurature_view;
+    protected Context cxt; //passing this to FetchAPI?
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init_views();
         update_time();
-        get_cords();
+        //get_cords();
     }
 
     private void init_views() {
@@ -38,18 +40,20 @@ public class MainActivity extends AppCompatActivity {
         SetTime time = new SetTime();
         date_view.setText(time.getDate());
         time_view.setText(time.getTime());
+
+        //Log.i("api", fetch.getTemp());
     }
 
-    private void get_cords() {
-
-        Location locationNet = getLastBestLocation();
-        Log.i("long", Double.toString(locationNet.getLongitude()));
-        Log.i("lat", Double.toString(locationNet.getLatitude()));
-
-
-
-
-    }
+//    private void get_cords() {
+//
+//        Location locationNet = getLastBestLocation();
+//        Log.i("long", Double.toString(locationNet.getLongitude()));
+//        Log.i("lat", Double.toString(locationNet.getLatitude()));
+//
+//
+//
+//
+//    }
 
 //    private Location getLastKnownLocation() {
 //        LocationManager mLocationManager;
@@ -69,26 +73,26 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //        return bestLocation;
 //    }
-    private Location getLastBestLocation() {
-        LocationManager mLocationManager = null;
-        Location locationGPS = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        Location locationNet = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
-        long GPSLocationTime = 0;
-        if (null != locationGPS) { GPSLocationTime = locationGPS.getTime(); }
-
-        long NetLocationTime = 0;
-
-        if (null != locationNet) {
-            NetLocationTime = locationNet.getTime();
-        }
-
-        if ( 0 < GPSLocationTime - NetLocationTime ) {
-            return locationGPS;
-        }
-        else {
-            return locationNet;
-        }
-    }
+//    private Location getLastBestLocation() {
+//        LocationManager mLocationManager = null;
+//        Location locationGPS = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//        Location locationNet = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+//
+//        long GPSLocationTime = 0;
+//        if (null != locationGPS) { GPSLocationTime = locationGPS.getTime(); }
+//
+//        long NetLocationTime = 0;
+//
+//        if (null != locationNet) {
+//            NetLocationTime = locationNet.getTime();
+//        }
+//
+//        if ( 0 < GPSLocationTime - NetLocationTime ) {
+//            return locationGPS;
+//        }
+//        else {
+//            return locationNet;
+//        }
+//    }
 
 }
