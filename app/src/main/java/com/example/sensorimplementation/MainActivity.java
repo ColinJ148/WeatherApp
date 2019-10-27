@@ -13,36 +13,42 @@ import android.util.Log;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 public class MainActivity extends AppCompatActivity {
     private TextView date_view;
     private TextView time_view;
     private TextView tempurature_view;
-    protected Context cxt; //passing this to FetchAPI?
 
+    @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init_views();
         update_time();
-        //get_cords();
+        new FetchWeather().execute();
+        String output = null;
+
+        output = new FetchWeather().execute("test").get();
     }
 
-    private void init_views() {
-        date_view = findViewById(R.id.date);
-        time_view = findViewById(R.id.time);
-        tempurature_view = findViewById(R.id.temp);
-    }
+        // Log.i("api", fetchWeather.doInBackground("url"));
 
-    private void update_time() {
-        SetTime time = new SetTime();
-        date_view.setText(time.getDate());
-        time_view.setText(time.getTime());
+        private void init_views () {
+            date_view = findViewById(R.id.date);
+            time_view = findViewById(R.id.time);
+            tempurature_view = findViewById(R.id.temp);
+        }
 
-        //Log.i("api", fetch.getTemp());
-    }
+        private void update_time () {
+            SetTime time = new SetTime();
+            date_view.setText(time.getDate());
+            time_view.setText(time.getTime());
+
+            //Log.i("api", fetch.getTemp());
+        }
 
 //    private void get_cords() {
 //
@@ -95,4 +101,4 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //    }
 
-}
+    }
