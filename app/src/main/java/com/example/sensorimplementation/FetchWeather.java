@@ -12,7 +12,7 @@ import java.net.URL;
 
 
 // Class for API request
-public class FetchWeather extends AsyncTask<String, Void, String> {
+public class FetchWeather extends AsyncTask<String, String, String> {
     private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?lat=";
     private static String apiKey = "35d1d9629dd709dcbf9292faed95cc40";
     private static Double latitude = 26.614149;
@@ -44,15 +44,24 @@ public class FetchWeather extends AsyncTask<String, Void, String> {
                 buffer.append(line + "rn");
 
             inputStream.close();
-            con.disconnect();
+
             apiResponse = buffer.toString();
             return apiResponse;
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            return apiResponse;
+            con.disconnect();
         }
+        return apiResponse;
+    }
 
+    @Override
+    protected void onPostExecute(String result){
+        Log.i("Post Execute", "Post Exe called");
+        getWeather();
+    }
+    public String getWeather(){
+        return apiResponse;
     }
 
     @Override
