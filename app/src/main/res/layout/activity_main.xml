@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/update"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -12,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
         android:text="@string/time"
         android:textSize="24sp" />
 
@@ -23,8 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="37dp"
         android:fontFamily="@font/convergence"
         android:text="@string/date"
         android:textSize="24sp" />
@@ -33,22 +34,24 @@
         android:id="@+id/temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="268dp"
-        android:layout_marginTop="40dp"
+        android:layout_alignParentStart="false"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="264dp"
+        android:layout_marginEnd="236dp"
         android:fontFamily="@font/convergence"
         android:text="Temp"
         android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/cords"
+    <Button
+        android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="206dp"
-        android:text="TextView" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="201dp"
+        android:background="@color/colorPrimary"
+        android:text="Update"
+        android:textColor="@android:color/white" />
 
 </RelativeLayout>

@@ -4,6 +4,7 @@ package com.example.sensorimplementation;
 import android.os.AsyncTask;
 import android.util.Log;
 
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -18,8 +19,6 @@ public class FetchWeather extends AsyncTask<String, String, String> {
     private static Double latitude = 26.614149;
     private static Double longitude = -81.825768;
     private String apiResponse;
-    //https://developer.android.com/training/volley/simple#java
-    //Need to figure out context wrapper.
 
     public FetchWeather() {
         Log.i("FetchWeather", "Object created");
@@ -41,10 +40,8 @@ public class FetchWeather extends AsyncTask<String, String, String> {
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
             String line = null;
             while ((line = br.readLine()) != null)
-                buffer.append(line + "rn");
-
+                buffer.append(line);
             inputStream.close();
-
             apiResponse = buffer.toString();
             return apiResponse;
         } catch (Exception e) {
@@ -57,9 +54,9 @@ public class FetchWeather extends AsyncTask<String, String, String> {
 
     @Override
     protected void onPostExecute(String result){
-        Log.i("Post Execute", "Post Exe called");
         getWeather();
     }
+
     public String getWeather(){
         return apiResponse;
     }
@@ -67,8 +64,5 @@ public class FetchWeather extends AsyncTask<String, String, String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-
     }
-
-
 }
