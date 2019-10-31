@@ -34,12 +34,35 @@
         android:id="@+id/temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="false"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="264dp"
-        android:layout_marginEnd="236dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="167dp"
         android:fontFamily="@font/convergence"
         android:text="Temp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/humitiy_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="266dp"
+        android:text="humitiy_view"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/min_temp_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="231dp"
+        android:text="min_temp_view"
         android:textSize="18sp" />
 
     <Button
@@ -53,5 +76,33 @@
         android:background="@color/colorPrimary"
         android:text="Update"
         android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/max_temp_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="199dp"
+        android:text="max_temp_view"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/pressure_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="299dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/location_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="122dp" />
 
 </RelativeLayout>
