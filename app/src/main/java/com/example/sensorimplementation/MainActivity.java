@@ -9,15 +9,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private Weather weather = null;
-    private TextView date_view;
-    private TextView time_view;
-    private TextView tempurature_view;
-    private TextView pressure_view;
-    private TextView min_temp_view;
-    private TextView max_temp_view;
-    private TextView location_view;
-    private TextView humidity_view;
+    private Weather weather;
+    private TextView date_view, time_view, temp_view, pressure_view, min_temp_view, max_temp_view,
+            location_view, humidity_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,27 +27,27 @@ public class MainActivity extends AppCompatActivity {
         }
         set_views();
     }
-
+    /*initializes views*/
     private void init_views() {
         date_view = findViewById(R.id.date);
         time_view = findViewById(R.id.time);
-        tempurature_view = findViewById(R.id.temp);
+        temp_view = findViewById(R.id.temp);
         pressure_view = findViewById(R.id.pressure_view);
         min_temp_view = findViewById(R.id.min_temp_view);
         max_temp_view = findViewById(R.id.max_temp_view);
         humidity_view = findViewById(R.id.humitiy_view);
         location_view = findViewById(R.id.location_view);
     }
-
+    /*Method that updates the time displayed on the UI, going to change to system clock*/
     private void update_time() {
         SetTime time = new SetTime();
         date_view.setText(time.getDate());
         time_view.setText(time.getTime());
     }
-
+    /*Method that sets views using weather object*/
     private void set_views() {
-        tempurature_view.setText("Tempurature: " + weather.getTemp() + "\u00B0");
-        pressure_view.setText("Air Pressure: " + weather.getPressure() + "hPa");
+        temp_view.setText("Tempurature: " + weather.getTemp() + "\u00B0");
+        pressure_view.setText("Air Pressure: " + weather.getPressure() + " hPa");
         min_temp_view.setText("Todays Low: " + weather.getMinTemp() + "\u00B0");
         max_temp_view.setText("Todays High: " + weather.getMaxTemp() + "\u00B0");
         humidity_view.setText("Humidity: " + weather.getHumidity() + "%");

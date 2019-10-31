@@ -20,7 +20,7 @@ public class FetchWeather extends AsyncTask<String, String, String> {
         Log.i("FetchWeather", "Object created");
 
     }
-
+    /*API call to openweatherAPI and saves to string apiResponse*/
     @Override
     protected String doInBackground(String... url) {
         HttpURLConnection con = null;

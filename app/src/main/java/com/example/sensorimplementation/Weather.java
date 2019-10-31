@@ -2,6 +2,7 @@ package com.example.sensorimplementation;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
 import java.text.DecimalFormat;
 import java.util.concurrent.ExecutionException;
 
@@ -23,7 +24,7 @@ public class Weather {
         setFields(weatherJson);
         convertTemp();
     }
-
+    /*Method to gather information from Jsonobject and save to the fields in weather*/
     private void setFields(JsonObject weatherJson) {
         this.temp = weatherJson.getAsJsonObject("main").get("temp").getAsString();
         this.humidity = weatherJson.getAsJsonObject("main").get("humidity").getAsString();
@@ -32,16 +33,18 @@ public class Weather {
         this.minTemp = weatherJson.getAsJsonObject("main").get("temp_min").getAsString();
         this.maxTemp = weatherJson.getAsJsonObject("main").get("temp_max").getAsString();
         this.location = weatherJson.get("name").getAsString();
- //       this.weatherDescription = weatherJson.getAsJsonObject("weather").get("description").getAsString();
+        //       this.weatherDescription = weatherJson.getAsJsonObject("weather").get("description").getAsString();
     }
-    //
-    private void convertTemp(){
+
+    /*Converts temp to fahrenheit from kelvin and formats to one decimal place*/
+    private void convertTemp() {
         DecimalFormat df = new DecimalFormat("###.#");
         double fahrenheit = Double.valueOf(temp);
         fahrenheit = (fahrenheit * (1.8)) - 459;
         temp = df.format(fahrenheit);
     }
 
+    /*converts output string to JsonObject using Gson library*/
     private void convertToJson(String str) {
         weatherJson = new Gson().fromJson(str, JsonObject.class);
     }
