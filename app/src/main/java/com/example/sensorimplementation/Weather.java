@@ -7,13 +7,7 @@ import java.text.DecimalFormat;
 import java.util.concurrent.ExecutionException;
 
 public class Weather {
-    private String weatherDescription;
-    private String humidity;
-    private String pressure;
-    private String temp;
-    private String minTemp;
-    private String maxTemp;
-    private String location;
+    private String weatherDescription, humidity, pressure, temp, minTemp, maxTemp, location;
     private JsonObject weatherJson = null;
 
     public Weather() throws ExecutionException, InterruptedException {
@@ -24,6 +18,7 @@ public class Weather {
         setFields(weatherJson);
         convertTemp();
     }
+
     /*Method to gather information from Jsonobject and save to the fields in weather*/
     private void setFields(JsonObject weatherJson) {
         this.temp = weatherJson.getAsJsonObject("main").get("temp").getAsString();
