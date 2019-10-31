@@ -34,6 +34,7 @@ public class Weather {
         this.location = weatherJson.get("name").getAsString();
  //       this.weatherDescription = weatherJson.getAsJsonObject("weather").get("description").getAsString();
     }
+    //
     private void convertTemp(){
         DecimalFormat df = new DecimalFormat("###.#");
         double fahrenheit = Double.valueOf(temp);

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,8 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView min_temp_view;
     private TextView max_temp_view;
     private TextView location_view;
-    private TextView humditiy_view;
-
+    private TextView humidity_view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         pressure_view = findViewById(R.id.pressure_view);
         min_temp_view = findViewById(R.id.min_temp_view);
         max_temp_view = findViewById(R.id.max_temp_view);
-        humditiy_view = findViewById(R.id.humitiy_view);
+        humidity_view = findViewById(R.id.humitiy_view);
         location_view = findViewById(R.id.location_view);
     }
 
@@ -51,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
         time_view.setText(time.getTime());
     }
 
-    private void set_views(){
-        tempurature_view.setText("Tempurature: " + weather.getTemp());
-        pressure_view.setText("Air Pressure: " + weather.getPressure());
-        min_temp_view.setText("Todays Low: " + weather.getMinTemp());
-        max_temp_view.setText("Todays High: " + weather.getMaxTemp());
-        humditiy_view.setText("Humidity: " + weather.getHumidity());
+    private void set_views() {
+        tempurature_view.setText("Tempurature: " + weather.getTemp() + "\u00B0");
+        pressure_view.setText("Air Pressure: " + weather.getPressure() + "hPa");
+        min_temp_view.setText("Todays Low: " + weather.getMinTemp() + "\u00B0");
+        max_temp_view.setText("Todays High: " + weather.getMaxTemp() + "\u00B0");
+        humidity_view.setText("Humidity: " + weather.getHumidity() + "%");
         location_view.setText(weather.getLocation());
     }
 }
