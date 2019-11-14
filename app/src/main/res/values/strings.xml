@@ -3,4 +3,10 @@
     <string name="date">date</string>
     <string name="time">Time</string>
     <string name="weatherPic" />
+    <string name="Title">Weather App</string>
+    <string name="history">Get history</string>
+    <string name="temp">Temperature:</string>
+    <string name="todayHigh">Today\'s High:</string>
+    <string name="todayLow">Today\'s Low:</string>
+    <string name="humidity">Humidity:</string>
 </resources>

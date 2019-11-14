@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         }
         set_views();
     }
+
     /*initializes views*/
     private void init_views() {
         date_view = findViewById(R.id.date);
@@ -38,19 +39,21 @@ public class MainActivity extends AppCompatActivity {
         humidity_view = findViewById(R.id.humitiy_view);
         location_view = findViewById(R.id.location_view);
     }
+
     /*Method that updates the time displayed on the UI, going to change to system clock*/
     private void update_time() {
         SetTime time = new SetTime();
         date_view.setText(time.getDate());
         time_view.setText(time.getTime());
     }
+
     /*Method that sets views using weather object*/
     private void set_views() {
-        temp_view.setText("Tempurature: " + weather.getTemp() + "\u00B0");
-        pressure_view.setText("Air Pressure: " + weather.getPressure() + " hPa");
-        min_temp_view.setText("Todays Low: " + weather.getMinTemp() + "\u00B0");
-        max_temp_view.setText("Todays High: " + weather.getMaxTemp() + "\u00B0");
-        humidity_view.setText("Humidity: " + weather.getHumidity() + "%");
+        temp_view.setText(weather.getTemp() + "\u00B0");
+        pressure_view.setText(weather.getPressure() + " hPa");
+        min_temp_view.setText(weather.getMinTemp() + "\u00B0");
+        max_temp_view.setText(weather.getMaxTemp() + "\u00B0");
+        humidity_view.setText(weather.getHumidity() + "%");
         location_view.setText(weather.getLocation());
     }
 }

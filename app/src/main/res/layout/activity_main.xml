@@ -5,7 +5,9 @@
     android:id="@+id/update"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/background"
+    >
 
     <TextView
         android:id="@+id/time"
@@ -13,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="62dp"
         android:text="@string/time"
         android:textSize="24sp" />
 
@@ -24,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="97dp"
         android:fontFamily="@font/convergence"
         android:text="@string/date"
         android:textSize="24sp" />
@@ -36,11 +38,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="167dp"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="185dp"
         android:fontFamily="@font/convergence"
         android:text="Temp"
-        android:textSize="18sp" />
+        android:textSize="22dp" />
 
     <TextView
         android:id="@+id/humitiy_view"
@@ -48,9 +50,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="266dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="342dp"
         android:text="humitiy_view"
         android:textSize="18sp" />
 
@@ -60,22 +61,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="231dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="226dp"
+        android:layout_marginTop="297dp"
+        android:layout_marginEnd="49dp"
         android:text="min_temp_view"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/button"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="73dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="201dp"
-        android:background="@color/colorPrimary"
-        android:text="Update"
-        android:textColor="@android:color/white" />
+        android:layout_marginBottom="46dp"
+        android:background="@color/btnBackground"
+        android:text="@string/history"
+        android:textColor="@color/btnText" />
 
     <TextView
         android:id="@+id/max_temp_view"
@@ -83,9 +86,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="199dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="227dp"
+        android:layout_marginEnd="56dp"
         android:text="max_temp_view"
-        android:textSize="18sp" />
+        android:textSize="22dp" />
 
     <TextView
         android:id="@+id/pressure_view"
@@ -102,7 +108,54 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="122dp" />
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="91dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/convergence"
+        android:text="@string/Title"
+        android:textSize="32sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="184dp"
+        android:text="@string/temp"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="235dp"
+        android:text="@string/todayHigh"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="291dp"
+        android:text="@string/todayLow"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="289dp"
+        android:text="@string/humidity"
+        android:textSize="22sp" />
 
 </RelativeLayout>
