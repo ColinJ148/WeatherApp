@@ -1,8 +1,10 @@
 package com.example.sensorimplementation;
 
 import android.annotation.SuppressLint;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Window;
 import android.widget.TextView;
 
@@ -12,12 +14,38 @@ public class MainActivity extends AppCompatActivity {
     private Weather weather;
     private TextView date_view, time_view, temp_view, pressure_view, min_temp_view, max_temp_view,
             location_view, humidity_view;
+    private LocationManager locationManager;
+    private LocationListener locationListener;
+    private double latitude, longitude;
 
+
+    @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        locationListener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                latitude = location.getLatitude();
+                longitude = location.getLongitude();
+            }
+            @Override
+            public void onStatusChanged(String s, int i, Bundle bundle) {
+            }
+
+            @Override
+            public void onProviderEnabled(String s) {
+            }
+
+            @Override
+            public void onProviderDisabled(String s) {
+            }
+        };
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0,
+                locationListener);
         init_views();
         update_time();
         try {
@@ -26,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         set_views();
+
     }
+
 
     /*initializes views*/
     private void init_views() {
@@ -57,4 +87,5 @@ public class MainActivity extends AppCompatActivity {
         humidity_view.setText(weather.getHumidity() + "%");
         location_view.setText(weather.getLocation());
     }
+
 }
