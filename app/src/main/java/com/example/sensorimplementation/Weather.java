@@ -16,7 +16,6 @@ public class Weather {
         String output = fetchWeather.getWeather();
         convertToJson(output);
         setFields(weatherJson);
-        convertTemp();
     }
 
     /*Method to gather information from Jsonobject and save to the fields in weather*/
@@ -32,12 +31,14 @@ public class Weather {
     }
 
     /*Converts temp to fahrenheit from kelvin and formats to one decimal place
-    * need to rewrite into method to use multiple times (min/max temps)*/
-    private void convertTemp() {
+     * need to rewrite into method to use multiple times (min/max temps)*/
+    private String convertTemp(String temp) {
+        String output = null;
         DecimalFormat df = new DecimalFormat("###.#");
         double fahrenheit = Double.valueOf(temp);
         fahrenheit = (fahrenheit * (1.8)) - 459;
-        temp = df.format(fahrenheit);
+        output = df.format(fahrenheit);
+        return output;
     }
 
     /*converts output string to JsonObject using Gson library*/
@@ -58,15 +59,15 @@ public class Weather {
     }
 
     public String getTemp() {
-        return temp;
+        return convertTemp(temp);
     }
 
     public String getMinTemp() {
-        return minTemp;
+        return convertTemp(minTemp);
     }
 
     public String getMaxTemp() {
-        return maxTemp;
+        return convertTemp(maxTemp);
     }
 
     public String getLocation() {

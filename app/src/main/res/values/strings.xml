@@ -9,4 +9,6 @@
     <string name="todayHigh">Today\'s High:</string>
     <string name="todayLow">Today\'s Low:</string>
     <string name="humidity">Humidity:</string>
+    <string name="pressureView">Pressure:</string>
+    <string name="placeholder">placeholder</string>
 </resources>
