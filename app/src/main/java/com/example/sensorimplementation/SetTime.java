@@ -3,7 +3,7 @@ package com.example.sensorimplementation;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-/*Look into system clock for real time*/
+
 public class SetTime {
     private LocalDate currentDate;
     private LocalDateTime currentTime;
@@ -19,6 +19,8 @@ public class SetTime {
     }
 
     public String getDate() {
-        return currentDate.toString();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+        formatter.format(currentDate);
+        return formatter.format(currentDate);
     }
 }

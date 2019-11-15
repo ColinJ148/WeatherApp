@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         SetTime time = new SetTime();
         date_view.setText(time.getDate());
         time_view.setText(time.getTime());
+
     }
 
     /*Method that sets views using weather object*/

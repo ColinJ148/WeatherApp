@@ -30,10 +30,9 @@ public class Weather {
         //       this.weatherDescription = weatherJson.getAsJsonObject("weather").get("description").getAsString();
     }
 
-    /*Converts temp to fahrenheit from kelvin and formats to one decimal place
-     * need to rewrite into method to use multiple times (min/max temps)*/
+    /*Converts temp to fahrenheit from kelvin and formats to one decimal place*/
     private String convertTemp(String temp) {
-        String output = null;
+        String output;
         DecimalFormat df = new DecimalFormat("###.#");
         double fahrenheit = Double.valueOf(temp);
         fahrenheit = (fahrenheit * (1.8)) - 459;
