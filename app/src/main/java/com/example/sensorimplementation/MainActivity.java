@@ -1,14 +1,19 @@
 package com.example.sensorimplementation;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class MainActivity extends AppCompatActivity {
     private Weather weather;
@@ -18,13 +23,12 @@ public class MainActivity extends AppCompatActivity {
     private LocationListener locationListener;
     private double latitude, longitude;
 
-
-    @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+//        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
             }
+
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
             }
@@ -44,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
             public void onProviderDisabled(String s) {
             }
         };
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0,
-                locationListener);
         init_views();
         update_time();
         try {
@@ -54,6 +57,17 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         set_views();
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            return;
+        }
+
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 100,
+                locationListener);
+        String output = Double.toString(latitude);
+        Log.i("latitude", Double.toString(latitude));
+        Log.i("long", Double.toString(longitude));
+
 
     }
 
