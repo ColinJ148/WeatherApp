@@ -26,7 +26,8 @@ public class FetchWeather extends AsyncTask<String, String, String> {
         HttpURLConnection con = null;
         InputStream inputStream = null;
         try {
-            con = (HttpURLConnection) (new URL(BASE_URL + latitude + "&lon=" + longitude + "&APPID=" + apiKey)).openConnection();
+            con = (HttpURLConnection)
+                    (new URL(BASE_URL + latitude + "&lon=" + longitude + "&APPID=" + apiKey)).openConnection();
             con.setRequestMethod("GET");
             con.setDoInput(true);
             con.setDoOutput(true);
