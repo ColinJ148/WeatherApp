@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/update"
     android:layout_width="match_parent"
@@ -11,27 +10,30 @@
     <Button
         android:id="@+id/button"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="140dp"
-        android:layout_height="73dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="46dp"
+        android:layout_marginBottom="54dp"
         android:background="@color/btnBackground"
         android:text="@string/history"
         android:textColor="@color/btnText" />
 
     <TextView
         android:id="@+id/time"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="4dp"
         android:layout_marginTop="65dp"
+        android:fontFamily="@font/convergence"
         android:text="@string/time"
         android:textSize="24sp" />
 
     <TextView
+
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,6 +46,7 @@
         android:textSize="24sp" />
 
     <TextView
+
         android:id="@+id/temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,6 +66,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="230dp"
         android:layout_marginTop="355dp"
+        android:fontFamily="@font/convergence"
         android:text="humitiy_view"
         android:textSize="22sp" />
 
@@ -89,6 +93,7 @@
         android:layout_marginStart="230dp"
         android:layout_marginTop="220dp"
         android:layout_marginEnd="56dp"
+        android:fontFamily="@font/convergence"
         android:text="max_temp_view"
         android:textSize="22dp" />
 
@@ -100,6 +105,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="230dp"
         android:layout_marginTop="310dp"
+        android:fontFamily="@font/convergence"
         android:text="@string/placeholder"
         android:textSize="22sp" />
 
@@ -111,20 +117,21 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="85dp"
         android:layout_marginEnd="52dp"
+        android:fontFamily="@font/convergence"
         android:text="@string/placeholder"
         android:textSize="22sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentTop="false"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/convergence"
+        android:gravity="center"
         android:text="@string/Title"
         android:textSize="32sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -133,6 +140,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="175dp"
+        android:fontFamily="@font/convergence"
         android:text="@string/temp"
         android:textSize="22sp" />
 
@@ -142,8 +150,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
-
         android:layout_marginTop="220dp"
+        android:fontFamily="@font/convergence"
         android:text="@string/todayHigh"
         android:textSize="22sp" />
 
@@ -154,7 +162,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="265dp"
-
+        android:fontFamily="@font/convergence"
         android:text="@string/todayLow"
         android:textSize="22sp" />
 
@@ -164,7 +172,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="355dp"
-
+        android:fontFamily="@font/convergence"
         android:text="@string/humidity"
         android:textSize="22sp" />
 
@@ -174,6 +182,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="310dp"
+        android:fontFamily="@font/convergence"
         android:text="@string/pressureView"
         android:textSize="22sp" />
 
@@ -183,8 +192,34 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="162dp"
-        android:layout_marginBottom="194dp"
+        android:layout_marginStart="269dp"
+        android:layout_marginBottom="181dp"
+        android:fontFamily="@font/convergence"
         android:text="@string/placeholder" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="false"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="214dp"
+        android:fontFamily="@font/convergence"
+        android:gravity="center"
+        android:text="@string/sensorMsg"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:fontFamily="@font/convergence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginBottom="181dp"
+        android:text="@string/yourCords" />
 
 </RelativeLayout>

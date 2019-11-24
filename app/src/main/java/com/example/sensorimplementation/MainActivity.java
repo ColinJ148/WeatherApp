@@ -9,8 +9,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
+import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
     private Weather weather;
@@ -25,15 +28,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-//        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                latitude = location.getLatitude();
-                longitude = location.getLongitude();
-                cords_view.setText(Double.toString(latitude));
-                /*set views to the cords */
+                cords_view.setText(formatCords(location.getLongitude(), location.getLatitude()));
+
             }
 
             @Override
@@ -59,20 +59,17 @@ public class MainActivity extends AppCompatActivity {
         if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             return;
         }
 
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 100,
                 locationListener);
 
-
-        getView();
-        Log.i("latitude", Double.toString(latitude));
-        Log.i("long", Double.toString(longitude));
-
-
-
+        //   getView();
+        Log.d("latitude", Double.toString(latitude));
+        Log.d("long", Double.toString(longitude));
     }
 
 
@@ -106,8 +103,15 @@ public class MainActivity extends AppCompatActivity {
         location_view.setText(weather.getLocation());
     }
 
-    private void getView(){
-        latitude = Double.valueOf(cords_view.getText().toString()) ;
+    private String formatCords(double longitude, double latitude) {
+        String output;
+        DecimalFormat df = new DecimalFormat("###.##");
+        output = df.format(longitude) + ", " + df.format(latitude);
+        return output;
+    }
+
+    private void getView() {
+        latitude = Double.valueOf(cords_view.getText().toString());
     }
 
 }

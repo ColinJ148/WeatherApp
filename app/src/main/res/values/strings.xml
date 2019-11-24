@@ -12,4 +12,6 @@
     <string name="pressureView">Pressure:</string>
     <string name="placeholder">placeholder</string>
     <string name="message1">Today\'s Weather</string>
+    <string name="sensorMsg">From Your Sensors</string>
+    <string name="yourCords">Coordinates</string>
 </resources>
