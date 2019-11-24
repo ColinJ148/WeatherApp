@@ -2,6 +2,10 @@ package com.example.sensorimplementation;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -21,19 +25,24 @@ public class MainActivity extends AppCompatActivity {
             location_view, humidity_view, cords_view;
     private LocationManager locationManager;
     private LocationListener locationListener;
-    private double latitude, longitude;
+    private SensorManager sensorManager;
+    private Sensor pressureSensor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+        init_views();
+
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
+                update_time();
                 cords_view.setText(formatCords(location.getLongitude(), location.getLatitude()));
-
+                updateWeather(location.getLongitude(), location.getLatitude());
+                set_views();
             }
 
             @Override
@@ -48,14 +57,20 @@ public class MainActivity extends AppCompatActivity {
             public void onProviderDisabled(String s) {
             }
         };
-        init_views();
-        update_time();
-        try {
-            weather = new Weather();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        set_views();
+
+
+        SensorEventListener sensorEventListener = new SensorEventListener() {
+            @Override
+            public void onSensorChanged(SensorEvent sensorEvent) {
+                float[] values = sensorEvent.values;
+            }
+
+            @Override
+            public void onAccuracyChanged(Sensor sensor, int i) {
+
+            }
+        };
+
         if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED) {
@@ -63,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             return;
         }
-
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 100,
                 locationListener);
 
@@ -110,8 +124,11 @@ public class MainActivity extends AppCompatActivity {
         return output;
     }
 
-    private void getView() {
-        latitude = Double.valueOf(cords_view.getText().toString());
+    private void updateWeather(double longitude, double latitude) {
+        try {
+            weather = new Weather(longitude, latitude);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
 }

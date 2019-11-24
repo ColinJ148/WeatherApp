@@ -10,8 +10,8 @@ public class Weather {
     private String weatherDescription, humidity, pressure, temp, minTemp, maxTemp, location;
     private JsonObject weatherJson = null;
 
-    public Weather() throws ExecutionException, InterruptedException {
-        FetchWeather fetchWeather = new FetchWeather();
+    public Weather(double longi, double lat) throws ExecutionException, InterruptedException {
+        FetchWeather fetchWeather = new FetchWeather(longi,lat);
         fetchWeather.execute().get();
         String output = fetchWeather.getWeather();
         convertToJson(output);

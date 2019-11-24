@@ -12,14 +12,15 @@ import java.net.URL;
 public class FetchWeather extends AsyncTask<String, String, String> {
     private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?lat=";
     private static String apiKey = "35d1d9629dd709dcbf9292faed95cc40";
-    private static Double latitude = 26.614149;
-    private static Double longitude = -81.825768;
+    private static Double latitude;
+    private static Double longitude;
     private String apiResponse;
 
-    public FetchWeather() {
-        Log.i("FetchWeather", "Object created");
-
+    public FetchWeather(double longi, double lat){
+        longitude = longi;
+        latitude = lat;
     }
+
     /*API call to openweatherAPI and saves to string apiResponse*/
     @Override
     protected String doInBackground(String... url) {
