@@ -26,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="@font/convergence"
         android:text="@string/time"
         android:textSize="24sp" />
@@ -39,11 +39,52 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="102dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="119dp"
         android:fontFamily="@font/convergence"
         android:text="@string/date"
         android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="246dp"
+        android:fontFamily="@font/convergence"
+        android:text="@string/temp"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="420dp"
+        android:fontFamily="@font/convergence"
+        android:text="@string/humidity"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="381dp"
+        android:fontFamily="@font/convergence"
+        android:text="@string/pressureView"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="336dp"
+        android:fontFamily="@font/convergence"
+        android:text="@string/todayLow"
+        android:textSize="22sp" />
 
     <TextView
 
@@ -52,36 +93,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="230dp"
-        android:layout_marginTop="175dp"
+        android:layout_marginStart="255dp"
+        android:layout_marginTop="246dp"
         android:fontFamily="@font/convergence"
-        android:text="Temp"
+        android:text="@string/placeholder"
         android:textSize="22dp" />
-
-    <TextView
-        android:id="@+id/humitiy_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="230dp"
-        android:layout_marginTop="355dp"
-        android:fontFamily="@font/convergence"
-        android:text="humitiy_view"
-        android:textSize="22sp" />
-
-    <TextView
-        android:id="@+id/min_temp_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="230dp"
-        android:layout_marginTop="265dp"
-        android:layout_marginEnd="49dp"
-        android:text="min_temp_view"
-        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/max_temp_view"
@@ -90,12 +106,26 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="230dp"
-        android:layout_marginTop="220dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginStart="255dp"
+        android:layout_marginTop="291dp"
+        android:layout_marginEnd="29dp"
         android:fontFamily="@font/convergence"
-        android:text="max_temp_view"
+        android:text="@string/placeholder"
         android:textSize="22dp" />
+
+    <TextView
+        android:id="@+id/min_temp_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="255dp"
+        android:layout_marginTop="335dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/convergence"
+        android:text="@string/placeholder"
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/pressure_view"
@@ -103,10 +133,44 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="230dp"
-        android:layout_marginTop="310dp"
+        android:layout_marginStart="255dp"
+        android:layout_marginTop="381dp"
         android:fontFamily="@font/convergence"
         android:text="@string/placeholder"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/humitiy_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="255dp"
+        android:layout_marginTop="420dp"
+        android:fontFamily="@font/convergence"
+        android:text="@string/placeholder"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="198dp"
+        android:fontFamily="@font/convergence"
+        android:text="@string/apiName"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="291dp"
+        android:fontFamily="@font/convergence"
+        android:text="@string/todayHigh"
         android:textSize="22sp" />
 
     <TextView
@@ -115,8 +179,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="85dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginEnd="42dp"
         android:fontFamily="@font/convergence"
         android:text="@string/placeholder"
         android:textSize="22sp" />
@@ -132,59 +196,6 @@
         android:text="@string/Title"
         android:textSize="32sp"
         android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="175dp"
-        android:fontFamily="@font/convergence"
-        android:text="@string/temp"
-        android:textSize="22sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="220dp"
-        android:fontFamily="@font/convergence"
-        android:text="@string/todayHigh"
-        android:textSize="22sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="265dp"
-        android:fontFamily="@font/convergence"
-        android:text="@string/todayLow"
-        android:textSize="22sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="355dp"
-        android:fontFamily="@font/convergence"
-        android:text="@string/humidity"
-        android:textSize="22sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="310dp"
-        android:fontFamily="@font/convergence"
-        android:text="@string/pressureView"
-        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/cords"

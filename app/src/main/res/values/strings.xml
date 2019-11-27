@@ -15,4 +15,5 @@
     <string name="sensorMsg">From Your Sensors</string>
     <string name="yourCords">Coordinates</string>
     <string name="AirPressure">Air Pressure</string>
+    <string name="apiName">OpenWeatherAPI</string>
 </resources>
