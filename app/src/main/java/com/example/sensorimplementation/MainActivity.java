@@ -17,6 +17,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+
 import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private LocationListener locationListener;
     private SensorManager sensorManager;
     private Sensor pressureSensor;
+    private FusedLocationProviderClient fusedLocationClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +41,22 @@ public class MainActivity extends AppCompatActivity {
         init_views();
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         pressureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
-
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        update_time();
+                        cords_view.setText(formatCords(location.getLongitude(), location.getLatitude()));
+                        updateWeather(location.getLongitude(), location.getLatitude());
+                        set_views();
+                        if (location != null) {
+                            // Logic to handle location object
+                        }
+                    }
+                });
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
@@ -84,11 +103,6 @@ public class MainActivity extends AppCompatActivity {
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1,
                 locationListener);
         sensorManager.registerListener(sensorEventListener, pressureSensor, SensorManager.SENSOR_DELAY_UI);
-
-
-        //   getView();
-//        Log.d("latitude", Double.toString(latitude));
-//        Log.d("long", Double.toString(longitude));
     }
 
 
