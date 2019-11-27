@@ -222,4 +222,23 @@
         android:layout_marginBottom="181dp"
         android:text="@string/yourCords" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="59dp"
+        android:layout_marginBottom="153dp"
+        android:text="@string/AirPressure" />
+
+    <TextView
+        android:id="@+id/air_pressure_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="67dp"
+        android:layout_marginBottom="153dp"
+        android:text="@string/placeholder" />
+
 </RelativeLayout>

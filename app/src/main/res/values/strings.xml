@@ -14,4 +14,5 @@
     <string name="message1">Today\'s Weather</string>
     <string name="sensorMsg">From Your Sensors</string>
     <string name="yourCords">Coordinates</string>
+    <string name="AirPressure">Air Pressure</string>
 </resources>

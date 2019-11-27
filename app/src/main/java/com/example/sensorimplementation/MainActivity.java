@@ -22,7 +22,7 @@ import java.text.DecimalFormat;
 public class MainActivity extends AppCompatActivity {
     private Weather weather;
     private TextView date_view, time_view, temp_view, pressure_view, min_temp_view, max_temp_view,
-            location_view, humidity_view, cords_view;
+            location_view, humidity_view, cords_view, air_pressure_view;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private SensorManager sensorManager;
@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         init_views();
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        pressureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
                 float[] values = sensorEvent.values;
+                air_pressure_view.setText(String.format("%.3f mbar", values[0]));
             }
 
             @Override
@@ -78,12 +81,14 @@ public class MainActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             return;
         }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 100,
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1,
                 locationListener);
+        sensorManager.registerListener(sensorEventListener, pressureSensor, SensorManager.SENSOR_DELAY_UI);
+
 
         //   getView();
-        Log.d("latitude", Double.toString(latitude));
-        Log.d("long", Double.toString(longitude));
+//        Log.d("latitude", Double.toString(latitude));
+//        Log.d("long", Double.toString(longitude));
     }
 
 
@@ -98,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         humidity_view = findViewById(R.id.humitiy_view);
         location_view = findViewById(R.id.location_view);
         cords_view = findViewById(R.id.cords);
+        air_pressure_view = findViewById(R.id.air_pressure_view);
     }
 
     /*Method that updates the time displayed on the UI, going to change to system clock*/
