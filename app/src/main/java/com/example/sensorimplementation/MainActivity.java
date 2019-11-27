@@ -10,8 +10,9 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,11 +21,15 @@ import androidx.core.app.ActivityCompat;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
     private Weather weather;
+    private Button history_btn;
     private TextView date_view, time_view, temp_view, pressure_view, min_temp_view, max_temp_view,
             location_view, humidity_view, cords_view, air_pressure_view;
     private LocationManager locationManager;
@@ -36,20 +41,39 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(MainActivity.this);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
         init_views();
+//        dbRef =
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("weather");
+     //   myRef.setValue("Hello, World!");
+
+
+
+
+
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         pressureSensor = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+
+        history_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
                         update_time();
-                        cords_view.setText(formatCords(location.getLongitude(), location.getLatitude()));
+                        cords_view.setText(formatCords(location.getLongitude(),
+                                location.getLatitude()));
                         updateWeather(location.getLongitude(), location.getLatitude());
                         set_views();
                         if (location != null) {
@@ -63,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 update_time();
                 cords_view.setText(formatCords(location.getLongitude(), location.getLatitude()));
                 updateWeather(location.getLongitude(), location.getLatitude());
+                myRef.setValue(weather);
                 set_views();
             }
 
@@ -102,7 +127,8 @@ public class MainActivity extends AppCompatActivity {
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1,
                 locationListener);
-        sensorManager.registerListener(sensorEventListener, pressureSensor, SensorManager.SENSOR_DELAY_UI);
+        sensorManager.registerListener(sensorEventListener, pressureSensor,
+                SensorManager.SENSOR_DELAY_UI);
     }
 
 
@@ -118,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         location_view = findViewById(R.id.location_view);
         cords_view = findViewById(R.id.cords);
         air_pressure_view = findViewById(R.id.air_pressure_view);
+        history_btn = findViewById(R.id.get_history_btn);
     }
 
     /*Method that updates the time displayed on the UI, going to change to system clock*/
