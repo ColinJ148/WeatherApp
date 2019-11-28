@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private SensorManager sensorManager;
     private Sensor pressureSensor;
     private FusedLocationProviderClient fusedLocationClient;
+    DatabaseReference weatherdb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +45,9 @@ public class MainActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(MainActivity.this);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+        weatherdb = FirebaseDatabase.getInstance().getReference("weather");
+
         init_views();
-//        dbRef =
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = database.getReference("weather");
-     //   myRef.setValue("Hello, World!");
-
-
-
 
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -87,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 update_time();
                 cords_view.setText(formatCords(location.getLongitude(), location.getLatitude()));
                 updateWeather(location.getLongitude(), location.getLatitude());
-                myRef.setValue(weather);
+                writeWeather(weather);
                 set_views();
             }
 
@@ -178,4 +174,10 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    private void writeWeather(Weather weather) {
+        String location = weatherdb.push().getKey();
+        location = weather.getLocation();
+        weatherdb.child(location).setValue(weather);
+         }
 }

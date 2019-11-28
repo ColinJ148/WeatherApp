@@ -4,10 +4,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.concurrent.ExecutionException;
 
 public class Weather {
     private String weatherDescription, humidity, pressure, temp, minTemp, maxTemp, location;
+    private LocalDateTime time;
     private JsonObject weatherJson = null;
 
     public Weather(double longi, double lat) throws ExecutionException, InterruptedException {
@@ -73,5 +76,7 @@ public class Weather {
         return location;
     }
 
-
+    public String getTime() {
+        return LocalDate.now().toString();
+    }
 }
