@@ -13,8 +13,11 @@ public class Weather {
     private LocalDateTime time;
     private JsonObject weatherJson = null;
 
+    public Weather() {
+    }
+
     public Weather(double longi, double lat) throws ExecutionException, InterruptedException {
-        FetchWeather fetchWeather = new FetchWeather(longi,lat);
+        FetchWeather fetchWeather = new FetchWeather(longi, lat);
         fetchWeather.execute().get();
         String output = fetchWeather.getWeather();
         convertToJson(output);
@@ -30,7 +33,8 @@ public class Weather {
         this.minTemp = weatherJson.getAsJsonObject("main").get("temp_min").getAsString();
         this.maxTemp = weatherJson.getAsJsonObject("main").get("temp_max").getAsString();
         this.location = weatherJson.get("name").getAsString();
-        //       this.weatherDescription = weatherJson.getAsJsonObject("weather").get("description").getAsString();
+        //       this.weatherDescription = weatherJson.getAsJsonObject("weather").get
+        //       ("description").getAsString();
     }
 
     /*Converts temp to fahrenheit from kelvin and formats to one decimal place*/

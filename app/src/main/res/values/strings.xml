@@ -16,4 +16,5 @@
     <string name="yourCords">Coordinates</string>
     <string name="AirPressure">Air Pressure</string>
     <string name="apiName">OpenWeatherAPI</string>
+    <string name="title_activity_view_history">viewHistory</string>
 </resources>

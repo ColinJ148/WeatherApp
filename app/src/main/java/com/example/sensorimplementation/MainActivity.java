@@ -1,6 +1,7 @@
 package com.example.sensorimplementation;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -10,6 +11,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         history_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(MainActivity.this, viewHistory.class));
             }
         });
 
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                         updateWeather(location.getLongitude(), location.getLatitude());
                         set_views();
                         if (location != null) {
-                            // Logic to handle location object
+                            Log.d("location != null", "location not null");
                         }
                     }
                 });
@@ -179,5 +181,5 @@ public class MainActivity extends AppCompatActivity {
         String location = weatherdb.push().getKey();
         location = weather.getLocation();
         weatherdb.child(location).setValue(weather);
-         }
+    }
 }
